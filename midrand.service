@@ -1,0 +1,9 @@
+[Unit]
+Description=Randomizes /etc/machine-id
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/midrand
+
+[Install]
+WantedBy=multi-user.target
