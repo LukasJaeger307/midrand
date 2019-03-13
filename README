@@ -1,1 +1,40 @@
-More to come
+# Midrand - The Machine ID RANDomizer
+
+Just found `/etc/machine-id`? You don't like your machine to make itself
+identifiable? You can either switch to Devuan and get ancient packages that make
+Debian look shiny and new. Or you can install this little application and
+randomize `/etc/machine-id` at every system boot.
+
+## WARNING!
+
+Depending on what applications and services you use, this MIGHT BREAK something.
+Don't install this application unless you are ABSOLTELY CERTAIN that you don't
+need `/etc/machine-id` for anything. I give no guarantee for any damages so be
+careful.
+
+## Installation
+Midrand is an autotools application, so it's basically just cloning this
+repository and doing the old
+
+```sh
+./configure
+make
+sudo make install
+```
+
+Now you can randomize `/etc/machine-id` anytime you want with
+
+```sh
+sudo midrand
+```
+
+If you want to randomize it on every system boot, you need to install the
+systemd service file and enable it. Assuming you are using systemd, but all the
+major distros have it, so chances are good.
+
+```sh
+sudo cp midrand.service /etc/systemd/system
+sudo systemctll enable midrand.service
+```
+
+Now `/etc/machine-id` should be randomized on each system boot.
