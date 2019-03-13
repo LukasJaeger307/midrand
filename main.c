@@ -44,12 +44,12 @@ int main(){
 	// Writing the hex string to a file
 	FILE * file = fopen("/etc/machine-id", "w");
 	if (file == NULL){
-		printf("Could not /etc/machine-id. You probably forgot to run midrand with sudo.\n");
+		printf("Could not open /etc/machine-id. You probably forgot to run midrand with sudo.\n");
 		return 1;
 	}
 
 	if (fwrite(hex_string, sizeof(uint8_t), HEX_STRING_SIZE, file) != HEX_STRING_SIZE){
-		printf("Writing failed\n");
+		printf("Writing to /etc/machine-id failed\n");
 	}
 
 	if (fclose(file) != 0){
